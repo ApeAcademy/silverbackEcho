@@ -18,7 +18,7 @@ def receive() -> bool:
     return True
 
 @external
-def sendETH(receiver: address, amount: uint256) -> bool:
+def sendETH(receiver: address, amount: uint256):
     """
     Function to send ETH to a specified address.
 
@@ -27,15 +27,4 @@ def sendETH(receiver: address, amount: uint256) -> bool:
     :return: True if the transaction is successful, otherwise False
     """
     assert self.balance >= amount, "Insufficient balance to send ETH"
-    success: bool = send(receiver, amount)
-    return success
-
-@view
-@external
-def balance() -> uint256:
-    """
-    Get the contract's ETH balance.
-
-    :return: The balance of the contract in wei
-    """
-    return self.balance
+    send(receiver, amount)

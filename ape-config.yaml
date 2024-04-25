@@ -1,6 +1,6 @@
 name: echo
 
-networks:
+geth:
   ethereum:
     sepolia:
       uri: https://ethereum-sepolia-rpc.publicnode.com
