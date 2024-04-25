@@ -1,0 +1,10 @@
+name: echo
+
+networks:
+  ethereum:
+    sepolia:
+      uri: https://ethereum-sepolia-rpc.publicnode.com
+      
+plugins:
+  - name: vyper  # If you're using Vyper contracts
+  - name: etherscan  # If you're using Etherscan for contract verification
