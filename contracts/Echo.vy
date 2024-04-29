@@ -17,7 +17,7 @@ def __default__():
     Fallback function to receive ETH and emit the Received event.
     Recieve method
     """
-    log Received(msg.value)
+    log Received(msg.sender, msg.value)
 
 @external
 def withdraw():

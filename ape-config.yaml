@@ -4,7 +4,8 @@ geth:
   ethereum:
     sepolia:
       uri: https://ethereum-sepolia-rpc.publicnode.com
+# publi
       
 plugins:
-  - name: vyper  # If you're using Vyper contracts
-  - name: etherscan  # If you're using Etherscan for contract verification
+  - name: vyper
+  - name: etherscan
