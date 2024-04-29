@@ -1,7 +1,9 @@
 from ape import accounts, networks, project, Contract
 
 # Replace with the actual contract address after deployment
-CONTRACT_ADDRESS = "0x4B3605c1f1089b33838538E6FabE5984100CB9ae"
+# 0x4B3605c1f1089b33838538E6FabE5984100CB9ae
+# 0xE435d0ED21afeE7b46d03E92977F08a3155FAfa1
+CONTRACT_ADDRESS = "0xE435d0ED21afeE7b46d03E92977F08a3155FAfa1"
 
 # The sender and receiver addresses
 SENDER_ADDRESS = accounts.load("sepDev2")
@@ -27,7 +29,7 @@ def main():
         # Send ETH from the contract to the receiver
         try:
             sender_account.transfer(my_contract, ".001 ether",gas_limit=50_000) 
-            tx = my_contract.withdraw(sender=sender_account)
+            tx = my_contract.withdraw(value = .01 sender=sender_account)
         except Exception as e:
             print(e)
 

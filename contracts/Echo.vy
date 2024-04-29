@@ -1,13 +1,12 @@
-# @version 0.3.1
+# @version 0.3.10
 
 event Received:
     sender: indexed(address)
     amount: uint256
-    message: Bytes[160]
 
 OWNER: immutable(address)
 
-@externalex
+@external
 def __init__():
     OWNER = msg.sender
 
@@ -18,7 +17,7 @@ def __default__():
     Fallback function to receive ETH and emit the Received event.
     Recieve method
     """
-    log Received(msg.sender, msg.value, slice(msg.data, 0, 160))
+    log Received(msg.value)
 
 @external
 def withdraw():
