@@ -4,7 +4,8 @@ geth:
   ethereum:
     sepolia:
       uri: https://ethereum-sepolia-rpc.publicnode.com
-# publi
+# public node sepolia is default with ape so dont need to do this
+# but keep it for demo showcase
       
 plugins:
   - name: vyper
