@@ -1,5 +1,5 @@
 from ape import accounts, networks, project, Contract
-import scripts.scream as scream
+import scripts.monitor as monitor
 
 # Replace with the actual contract address after deployment
 CONTRACT_ADDRESS = "0xa6647bA51aBE24F4819931d7B29820Ef039A21ef"
@@ -37,7 +37,7 @@ def main():
         sender_balance = sender_account.balance
         if sender_balance/ 1e18 >= 2:
             print(f"Sender balance before sending: {sender_balance / 1e18} eth which is greater than .001 eth")
-            scream.send_html_request()
+            monitor.montior_block()
         try:
             # withdraw money from contract
             tx_withdraw = my_contract.withdraw(sender=receiver_account, gas_limit = 50_000)
