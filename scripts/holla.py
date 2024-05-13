@@ -2,7 +2,7 @@ from ape import accounts, networks, project, Contract
 import bots.hollaback as hollaback
 
 # Replace with the actual contract address after deployment
-CONTRACT_ADDRESS = "0xa6647bA51aBE24F4819931d7B29820Ef039A21ef"
+CONTRACT_ADDRESS = "0xE8116A0Fb2D4Ee04F570fbEA4460F9C7B0121D76"
 
 # The amount to send (in wei)
 AMOUNT_TO_SEND = 10000
