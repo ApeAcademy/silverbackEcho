@@ -1,13 +1,12 @@
 from ape import accounts, networks, project, Contract
-import bots.hollaback as hollaback
 
 # Replace with the actual contract address after deployment
 CONTRACT_ADDRESS = "0xE8116A0Fb2D4Ee04F570fbEA4460F9C7B0121D76"
 
 # The amount to send (in wei)
-AMOUNT_TO_SEND = 10000
+AMOUNT_TO_SEND = 1000000000000000000
 
-with networks.parse_network_choice("ethereum:sepolia") as provider:
+with networks.parse_network_choice("ethereum:sepolia"):
     # Load the contract
     my_contract = Contract(CONTRACT_ADDRESS)
 
@@ -27,8 +26,6 @@ def main():
     except Exception as e:
         print(e)
 
-    hollaback.payment_received()
-        
 def withdraw_contract_balance():
     try:
         # withdraw money from contract
