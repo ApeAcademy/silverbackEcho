@@ -1,3 +1,5 @@
+from math import log2, floor
+
 from ape import convert, project
 from silverback import SilverbackApp
 
@@ -16,8 +18,6 @@ my_contract = project.Echo.at("0xE8116A0Fb2D4Ee04F570fbEA4460F9C7B0121D76")
 
 @app.on_(my_contract.Received)
 def payment_received(log):
-    # convert is an ape method to compare log.amount in wei vs wei 
-    if log.amount >= convert(".1 ether", int):
-        response = client.post_cast(text="AHHHHHHHHH")
-        print(response.cast.hash)
-        #print(client.get_healthcheck())
+    response = client.post_cast(text="A" + "H" * floor(log2(log.amount)))
+    print(response.cast.hash)
+    #print(client.get_healthcheck())
