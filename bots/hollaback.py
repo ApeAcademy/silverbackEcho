@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
 from math import log2, floor
 
-from ape import convert, project
-=======
-from ape import convert, project, accounts
->>>>>>> Stashed changes
+from ape import project, accounts
 from silverback import SilverbackApp
 
 from ape_farcaster import Warpcast
