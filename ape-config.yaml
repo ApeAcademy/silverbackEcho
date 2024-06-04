@@ -1,11 +1,9 @@
 name: echo
 
-node:
-  ethereum:
-    sepolia:
+ethereum:
+  default_network: sepolia
+  sepolia:
       uri: https://ethereum-sepolia-rpc.publicnode.com
-# public node sepolia is default with ape so dont need to do this
-# but keep it for demo showcase
       
 plugins:
   - name: vyper
