@@ -1,6 +1,5 @@
 eth-ape
 ape-farcaster
-farcaster
 ape-vyper
 ape-etherscan
 silverback

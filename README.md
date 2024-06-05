@@ -18,7 +18,7 @@ The `hollaback.py` file sets up a Silverback bot to watch for events on the cont
 
 ### scripts/holla.py
 
-The `Holla.py` loads the contract, transfers ETH to the contract, and calls the contract's `withdraw` method to withdraw eth to the contract reciever.
+The `Holla.py` loads the contract, transfers ETH to the contract, and calls the contract's `withdraw` method to withdraw eth to the contract reciever this is for integration testing.
 
 ## Getting Started
 
