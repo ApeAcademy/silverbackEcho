@@ -1,79 +1,30 @@
-what i did in logical order
-what did i want to do
-contract, test the contract (holla.py)
-Test for the contract logic
-wrote the bot and showed that silverback work as a listening
-test it locall with anvil
- the fun part was farcast for the blog post
- 
-# intro
- hi my name is chris and this project is to teach you an example of how silverback can be used in a fun way. 
- 
- The goal of this project is to learn how to use silverback. I wanted to use the docs and my ability to learn to figure out a way to use it. At the time, Farcast just come to my radar and I want to have some fun using. I took inspo from one of my favorite telegram channel Bear Market Screaming Therapy group. It is a channel dedicated to just audio messages of people screaming.
- 
- So in a workshop session with my team, I proposed an idea of using Silverback. I got a breif understanding of what it can do. From what I understood, it can watch and trigger actions based off of certain conditions on chain.
- 
-HMM very interesting, so my first thought is what is a simple project that showcases this feature and what are some ideas that ive always wanted to automate. 
+### README.md
 
-My first thought was make a platform that just watches the chain and notifies me on basic conditions? I've always wanted to get notified when unique happends on chain. I should make a contract and see if I can track the changes. What should I do when I see a change? I should scream into the void and have it posted somewhere. Farcast seemed like a cool place to try. 
+# Ape Scream (Silverback Farcast Project)
 
-# Breakdown
-how should I break down this project?
+This project demonstrates the use of Silverback in a fun way by integrating it with a simple Vyper contract and a Warpcast service for broadcasting messages. The goal of this project is to trigger an action to scream into the void when a specific condition is met in the contract.
 
-1. Create a simple contract that accepts and withdraws eth. 
-2. Create the silverback watcher to watch the logs of events.
-3. Scream into the void
+## Project Setup
 
-So I did excatly that and chose to breakdown the project into seperate files for readability. 
+### Contract (Echo.vy)
 
-The file we have are:
-* Holla.py
-* Hollaback.py
-* Echo.vy
+The `Echo.vy` file contains a simple Vyper contract that emits a `Received` event when ETH is received and provides a `withdraw` method to send ETH to the contract owner.
 
-NOTE: Hollaback.py is the main script everything is ran through this. Lets start by breaking down the puzzle pieces.
+### hollaback.py
 
-## Echo.vy
-Echo.vy is the vyper contract that we are using to watch. It is a very simple contract so it is easy to understand. Silverback is going to watch the log events on chain to trigger events. More speficially, it is going to look at the amount Receueied and if it more than .01 eth. We will scream into the void. 
+The `hollaback.py` file sets up a SilverbackApp to watch for events on the contract. When a payment is received that exceeds 0.01 ETH, it triggers a message to be broadcasted using the Warpcast service.
 
-## Hollback.py
-Hollaback.py is the Silverback App itself. Using the Silverback Documentation, we know that we start all Silverback apps with:
+### Holla.py
 
-```python
+The `Holla.py` file initializes the network connection, loads the contract, transfers ETH to the contract, and triggers the contract's `withdraw` method.
 
-from silverback import SilverbackApp
-app = SilverbackApp()
-```
+## Getting Started
 
-from here, we are going to create a method based off of the event we want to watch. `@app.on_(my_contract.Received)`this is how we define what we are going to watch.
+1. Ensure you have the necessary accounts set up in your Ape environment
+2. Deploy the Vyper contract `Echo.vy` to the desired network and note the contract address.
 
-Based off of the Event Received, we are going to cast a message "Ah" and the number of H's are based on a equaiton `(text="A" + "H" * floor(log2(log.amount)))`
+3. Update the `CONTRACT_ADDRESS` variable in `Holla.py` and `hollaback.py` with the deployed contract address.
 
-and then cast and print it out  `print(response.cast.hash)`
+4. Run the SilverbackApp by executing `silverback run scripts.hollaback:app --network ethereum:sepolia` in one terminal.
 
-Now that we understand the 2 supporting pieces. Lets talk about the holla.py
-
-## Holla.py
-
-Holla.py is the main script. We want to setup the envioment and network we are going to play in. 
-* So we saved the contract addrress of Echo.vy 
-* set the network connection to ethereum:sepolia
-* define the sender_account to transfer eth to the contract
-
-in the main()
-we initiate a transfer to the contract
-
-silverback should be watching the event logs and read for the conditions.
-
-So how does Silverback interact with holla script? there are no direct calls to the Silverback App. That is the beauty of hosting it.
-
-You want to have 2 terminals running:
-1. Termianl 1: run this command to host your Silverback App
-  * `silverback run bots.hollaback:app --network ethereum:sepolia`
-
-the base of the command is `silverback run bots.hollaback:app`
-
-we chose to speficiy the network in the run command becasue we want to be able to run it in multiple networks without changing the core code. 
-
-2. Terminal 2: run this command to start your holla main script:
-   * ape run holla
+5. Run the `Holla.py` script by executing `ape run holla` in another terminal to interact with the contract and trigger the event.
