@@ -8,3 +8,4 @@ ethereum:
 plugins:
   - name: vyper
   - name: etherscan
+  - name: farcaster
