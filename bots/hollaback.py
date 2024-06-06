@@ -10,7 +10,7 @@ import os
 app = SilverbackApp()
 warper = accounts.load("warpNinjagod")
 client = Warpcast(warper)
-my_contract = project.Echo.at("0xE8116A0Fb2D4Ee04F570fbEA4460F9C7B0121D76")
+my_contract = project.Echo.at(os.environ("ECHO_CONTRACT"))
 
 @app.on_(my_contract.Received)
 def payment_received(log):
