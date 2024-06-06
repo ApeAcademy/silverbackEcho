@@ -3,7 +3,7 @@ from ape import accounts, networks, Contract
 # Replace with the actual contract address after deployment\
 CONTRACT_ADDRESS = os.environ("ECHO_CONTRACT")
 # The amount to send (in wei)
-AMOUNT_TO_SEND = 10000000000000000 # .01 eth
+AMOUNT_TO_SEND = 1000000000000000 # .01 eth
 
 my_contract = Contract(CONTRACT_ADDRESS)
 sender_account = accounts.load("sepDev")  # Use the correct alias for your account
@@ -16,7 +16,7 @@ def main():
     # Send ETH from the contract to the receiver
     try:
         # transfer eth to contract
-        tx_transfer = sender_account.transfer(my_contract, "0.01 ether",gas_limit=50_000)
+        tx_transfer = sender_account.transfer(my_contract, "0.001 ether",gas_limit=50_000)
         print(tx_transfer)
     except Exception as e:
         print(e)
