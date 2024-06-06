@@ -22,7 +22,7 @@ def payment_received(log):
         #print(response.cast.hash)
 
 def cast_image(log):
-    text="A" + "H" * floor(log2(log.amount))
+    scream="A" + "H" * floor(log2(log.amount))
     response = requests.post(
     f"https://api.stability.ai/v2beta/stable-image/generate/ultra",
     headers={
@@ -31,13 +31,14 @@ def cast_image(log):
     },
     files={"none": ''},
     data={
-        "prompt": text,
-        "output_format": "webp",
+        "prompt": f"Ape Scream: +{scream}",
+        "output_format": "jpeg",
    },
 )
     if response.status_code == 200:
-        image = f"./image_{datetime.now()}.webp"
+        image = "https://ipfs.decentralized-content.com/ipfs/bafkreieraqfkny7bttxd7h7kmnz6zy76vutst3qbjgjxsjnvrw7z3i2n7i"
+        #image = f"./image_{datetime.now()}.jpeg"
         with open(image, 'wb') as file:
-            client.post_cast(file.write(response.content))
+            client.post_cast(text=scream, embeds=[file])
     else:
         raise Exception(str(response.json()))
