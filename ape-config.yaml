@@ -1,10 +1,11 @@
 name: echo
 
-ethereum:
-  default_network: sepolia
-  sepolia:
-      uri: https://ethereum-sepolia-rpc.publicnode.com
-      
+node:
+  ethereum:
+    default_network: sepolia
+    sepolia:
+        uri: https://ethereum-sepolia-rpc.publicnode.com
+    
 plugins:
   - name: vyper
   - name: etherscan

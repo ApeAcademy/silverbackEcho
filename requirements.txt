@@ -1,0 +1,6 @@
+eth-ape>=0.8
+ape-farcaster
+ape-vyper
+ape-etherscan
+silverback
+ape-alchemy
