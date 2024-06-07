@@ -3,6 +3,7 @@ from ape_farcaster import Warpcast
 from ape import accounts
 import requests
 import os
+import base64
 
 
 STABILITY_KEY= os.environ.get("STABILITY_KEY") 
@@ -25,8 +26,10 @@ response = requests.post(
     },
 )
 
+client.post_cast(text="AHHHH",embeds=[base64.b64encode(open("./ApeScream.jpeg", 'rb').read())])
 
-with open("./ApeScream.jpeg", 'wb') as file:
-    breakpoint()
+with open("./ApeScream.jpeg", 'r') as file:
+    #breakpoint()
     image = "https://ipfs.decentralized-content.com/ipfs/bafkreieraqfkny7bttxd7h7kmnz6zy76vutst3qbjgjxsjnvrw7z3i2n7i"
-    client.post_cast(text="AHHHH",embeds=[image])
+client.post_cast(text="AHHHH",embeds=[base64.b64encode(open("./ApeScream.jpeg", 'r'))])
+    
