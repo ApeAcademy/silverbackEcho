@@ -26,10 +26,7 @@ response = requests.post(
     },
 )
 
-client.post_cast(text="AHHHH",embeds=[base64.b64encode(open("./ApeScream.jpeg", 'rb').read())])
-
 with open("./ApeScream.jpeg", 'r') as file:
-    #breakpoint()
     image = "https://ipfs.decentralized-content.com/ipfs/bafkreieraqfkny7bttxd7h7kmnz6zy76vutst3qbjgjxsjnvrw7z3i2n7i"
-client.post_cast(text="AHHHH",embeds=[base64.b64encode(open("./ApeScream.jpeg", 'r'))])
+    client.post_cast(text="AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",embeds=[image])
     

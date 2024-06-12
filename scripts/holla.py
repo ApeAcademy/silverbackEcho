@@ -1,7 +1,7 @@
 from ape import accounts, networks, Contract
-
+import os
 # Replace with the actual contract address after deployment
-CONTRACT_ADDRESS = "0xE8116A0Fb2D4Ee04F570fbEA4460F9C7B0121D76"
+CONTRACT_ADDRESS = os.environ.get("ECHO_CONTRACT")
 
 # The amount to send (in wei)
 AMOUNT_TO_SEND = 10000000000000000 # .01 eth
