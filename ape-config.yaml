@@ -6,4 +6,5 @@ ethereum:
 plugins:
   - name: vyper
   - name: etherscan
-  - name: wonderwords
+  - name: farcaster
+    version: ">=0.8.0b0"
