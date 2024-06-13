@@ -6,6 +6,14 @@ This project demonstrates the use of Silverback in a fun way by integrating it w
 
 ## Project Setup
 
+* pip install -r requirements.txt
+* you should have silverback and wonderwords installed with requirements
+* ape plugins install . or ape plugins install ape-config.yaml
+
+the ape plugins and ape should be 0.8.x or higher
+
+* you should have your Warcaster account
+
 ### Contract (Echo.vy)
 
 The `Echo.vy` file contains a simple Vyper contract that emits a `Received` event when ETH is received and provides a `withdraw` method to send ETH to the contract owner.
@@ -25,6 +33,8 @@ The `Holla.py` file initializes the network connection, loads the contract, tran
 
 3. Update the `CONTRACT_ADDRESS` variable in `Holla.py` and `hollaback.py` with the deployed contract address.
 
-4. Run the SilverbackApp by executing `silverback run scripts.hollaback:app --network ethereum:sepolia` in one terminal.
+4. Run the SilverbackApp by executing `silverback run bots.hollaback:app` in one terminal.
 
 5. Run the `Holla.py` script by executing `ape run holla` in another terminal to interact with the contract and trigger the event.
+
+Note if you get an error about no provider found. Try it multiple times it might not work the first time

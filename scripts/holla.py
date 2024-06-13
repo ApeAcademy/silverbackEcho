@@ -21,7 +21,7 @@ def main():
     # Send ETH from the contract to the receiver
     try:
         # transfer eth to contract
-        tx_transfer = sender_account.transfer(my_contract, "0.01 ether",gas_limit=100_000)
+        tx_transfer = sender_account.transfer(my_contract, "0.001 ether",gas_limit=100_000)
         print(tx_transfer)
     except Exception as e:
         print(e)

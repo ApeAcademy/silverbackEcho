@@ -39,7 +39,7 @@ def payment_received(log):
             break
         except Exception as e:
             print(e)
-            prompt = create_prompt(max(floor(log2(log.amount))- 12, 1))
+            prompt = create_prompt(max(floor(log10(log.amount))- 12, 1))
         
 
     # open the created image
