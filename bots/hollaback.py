@@ -17,7 +17,7 @@ PINATA_SECRET_API_KEY= os.environ.get("PINATA_SECRET_API_KEY")
 app = SilverbackApp()
 warper = accounts.load("warpNinjagod")
 client = Warpcast(warper)
-my_contract = project.Echo.at(os.environ.get("ECHO_CONTRACT"))
+my_contract = project.Echo.at(os.environ.get("ARB_ECHO_CONTRACT"))
 
 def create_prompt(number_adj:int) -> str:
     w = RandomWord()

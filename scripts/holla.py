@@ -1,13 +1,13 @@
 from ape import accounts, networks, Contract
 import os
 # Replace with the actual contract address after deployment
-CONTRACT_ADDRESS = os.environ.get("ECHO_CONTRACT")
+CONTRACT_ADDRESS = os.environ.get("ARB_ECHO_CONTRACT")
 
 # The amount to send (in wei)
-AMOUNT_TO_SEND = 10000000000000000 # .01 eth
+AMOUNT_TO_SEND = 10000000000000000 # .001 eth
 
 
-with networks.parse_network_choice("ethereum:sepolia"):
+with networks.parse_network_choice("arbitrum:sepolia"):
     # Load the contract
     my_contract = Contract(CONTRACT_ADDRESS)
 

@@ -1,6 +1,6 @@
 name: echo
 
-ethereum:
+arbitrum:
   default_network: sepolia
       
 plugins:
@@ -8,3 +8,4 @@ plugins:
   - name: etherscan
   - name: farcaster
     version: ">=0.8.0b0"
+  - name: arbitrum
