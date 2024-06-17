@@ -32,3 +32,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ env.REGISTRY }}/ApeWorX/silverbac-echo:latest
+
