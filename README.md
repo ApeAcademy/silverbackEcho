@@ -38,3 +38,17 @@ The `Holla.py` file initializes the network connection, loads the contract, tran
 5. Run the `Holla.py` script by executing `ape run holla` in another terminal to interact with the contract and trigger the event.
 
 Note if you get an error about no provider found. Try it multiple times it might not work the first time
+
+## Docker
+
+You can also run the project using Docker. To do so, follow these steps:
+
+```bash
+docker build -t silverback-echo .
+```
+
+Then to run the container, ensure you copy the `default.env` to `.env` and update the values with your environment variable values.
+
+```bash
+docker run --env-file .env --volume ~/.ape:/home/harambe/.ape silverback-echo:latest run "bots.hollaback:app"
+```
