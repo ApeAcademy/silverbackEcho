@@ -7,11 +7,11 @@ CONTRACT_ADDRESS = os.environ.get("ARB_ECHO_CONTRACT")
 AMOUNT_TO_SEND = 10000000000000000 # .001 eth
 
 
-with networks.parse_network_choice("arbitrum:sepolia"):
+with networks.parse_network_choice("arbitrum:mainnet"):
     # Load the contract
     my_contract = Contract(CONTRACT_ADDRESS)
 
-sender_account = accounts.load("sepDev")  # Use the correct alias for your account
+sender_account = accounts.load("ropDev")  # Use the correct alias for your account
 
 def main():
     
@@ -26,7 +26,7 @@ def main():
     except Exception as e:
         print(e)
 
-receiver_account = accounts.load("sepDev2")  # Use the correct alias for your account
+receiver_account = accounts.load("ropDev")  # Use the correct alias for your account
 
 def withdraw_contract_balance():
     try:

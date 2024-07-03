@@ -1,7 +1,7 @@
 name: echo
 
 arbitrum:
-  default_network: sepolia
+  default_network: mainnet
       
 plugins:
   - name: vyper
