@@ -50,5 +50,5 @@ docker build -t silverback-echo .
 Then to run the container, ensure you copy the `default.env` to `.env` and update the values with your environment variable values.
 
 ```bash
-docker run --env-file .env --volume ~/.aws:/home/harambe/.aws --volume ~/.ape:/home/harambe/.ape silverback-echo:latest run "bots.hollaback:app"
+docker run --env-file default.env --volume ~/.aws:/home/harambe/.aws --volume ~/.ape:/home/harambe/.ape silverback-echo:latest run "bots.hollaback:app"
 ```

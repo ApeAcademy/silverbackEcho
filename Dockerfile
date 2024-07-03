@@ -1,5 +1,8 @@
 FROM apeworx/silverback:latest
 
+USER harambe
+RUN mkdir ~/.aws
+
 WORKDIR /app
 COPY ./bots/* ./bots/
 COPY requirements.txt .
