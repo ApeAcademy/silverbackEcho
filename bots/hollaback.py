@@ -14,9 +14,8 @@ STABILITY_KEY = os.environ.get("STABILITY_KEY")
 PINATA_API_KEY = os.environ.get("PINATA_API_KEY")
 PINATA_SECRET_API_KEY = os.environ.get("PINATA_SECRET_API_KEY")
 
-warper = accounts.load(os.environ.get("APE_ACCOUNT_ALIAS"))
 app = SilverbackApp()
-client = Warpcast(warper)
+client = Warpcast(app.signer)
 my_contract = project.Echo.at(os.environ.get("ECHO_CONTRACT"))
 
 
