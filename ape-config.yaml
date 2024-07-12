@@ -8,3 +8,5 @@ plugins:
   - name: etherscan
   - name: farcaster
     version: ">=0.8.0b0"
+  - name: aws
+    version: ">=0.8.0a3"
