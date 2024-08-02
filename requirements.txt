@@ -1,2 +1,4 @@
 wonderwords
 silverback
+taskiq-sqs>=0.0.7
+mypy_boto3_sqs
