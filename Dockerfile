@@ -23,13 +23,13 @@ ENV PIP_NO_CACHE_DIR=off \
     POETRY_VERSION=1.6.1
 
 WORKDIR /app
+RUN mkdir -p .build && chown harambe:harambe .build
 
 USER harambe
 RUN mkdir ~/.aws
 
 COPY --chown=harambe:harambe ./bots/* ./bots/
 COPY --chown=harambe:harambe ./contracts/* ./contracts/
-COPY --chown=harambe:harambe ./.build/* ./.build/
 
 COPY ape-config.yaml ape-config.yaml
 COPY requirements.txt .
@@ -39,6 +39,7 @@ RUN pip install --upgrade pip \
 RUN ape plugins install .
 
 RUN ape tokens install tokens.1inch.eth
+RUN ape compile
 
 ENV WORKERS=1
 ENV MAX_EXCEPTIONS=3
