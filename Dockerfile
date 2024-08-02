@@ -28,6 +28,8 @@ USER harambe
 RUN mkdir ~/.aws
 
 COPY --chown=harambe:harambe ./bots/* ./bots/
+COPY --chown=harambe:harambe ./contracts/* ./contracts/
+COPY --chown=harambe:harambe ./.build/* ./.build/
 
 COPY ape-config.yaml ape-config.yaml
 COPY requirements.txt .
@@ -38,9 +40,7 @@ RUN ape plugins install .
 
 ENV WORKERS=1
 ENV MAX_EXCEPTIONS=3
-ENV SILVERBACK_BROKER_CLASS="taskiq_sqs:SQSBroker"
-ENV SILVERBACK_BROKER_KWARGS="{}"
-ENV SILVERBACK_NETWROK_CHOICE=ethereum:mainnet:alchemy
+ENV SILVERBACK_NETWROK_CHOICE=ethereum:sepolia:alchemy
 
 ENV STABILITY_KEY=
 ENV PINATA_API_KEY=
