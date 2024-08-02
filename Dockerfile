@@ -38,6 +38,8 @@ RUN pip install --upgrade pip \
 
 RUN ape plugins install .
 
+RUN ape tokens install tokens.1inch.eth
+
 ENV WORKERS=1
 ENV MAX_EXCEPTIONS=3
 ENV SILVERBACK_NETWROK_CHOICE=ethereum:sepolia:alchemy
