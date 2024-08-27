@@ -38,7 +38,7 @@ RUN pip install --upgrade pip \
 
 RUN ape plugins install .
 
-RUN ape tokens install tokens.1inch.eth
+RUN ape tokens install https://tokens.coingecko.com/uniswap/all.json
 RUN ape compile
 
 ENV WORKERS=1
