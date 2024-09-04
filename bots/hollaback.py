@@ -1,8 +1,9 @@
 from math import log10, floor
 
-from ape import project, accounts
+from ape import project
 from silverback import SilverbackApp
 from ape_farcaster import Warpcast
+import time
 
 import os
 import tempfile
@@ -15,9 +16,18 @@ PINATA_API_KEY = os.environ.get("PINATA_API_KEY")
 PINATA_SECRET_API_KEY = os.environ.get("PINATA_SECRET_API_KEY")
 
 app = SilverbackApp()
-client = Warpcast(app.signer)
-my_contract = project.Echo.at(os.environ.get("ECHO_CONTRACT"))
 
+attempts = 0
+while attempts < 11:
+    try:
+        client = Warpcast(app.signer)
+        break
+    except Exception as e:
+        print(e)        
+        attempts+=1
+        time.sleep(1)
+        
+my_contract = project.Echo.at(os.environ.get("ECHO_CONTRACT"))
 
 def create_prompt(number_adj: int) -> str:
     w = RandomWord()
