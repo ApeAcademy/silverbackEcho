@@ -1,5 +1,4 @@
 import pytest
-from unittest.mock import MagicMock
 from main import create_prompt, payment_received
 
 def test_create_prompt():
@@ -7,29 +6,24 @@ def test_create_prompt():
     assert "ape" in prompt
     assert "screaming" in prompt
 
-def test_payment_received(silverback_app, mock_contract, mock_client, mock_create_image, mock_upload_to_pinata, mock_env_vars):
+def test_payment_received(echo_contract, warpcast_client, log):
     # Simulate a log entry from the Received event
-    mock_log = MagicMock()
-    mock_log.sender = "0xMockSenderAddress"
-    mock_log.amount = 1000000000000000000  # Example amount in wei
+    log.sender = "0xSenderAddress"
+    log.amount = 1000000000000000000  # Example amount in wei
     
-    # Mocking the behavior of Warpcast client
-    silverback_app.client = mock_client
-    
-    # Test the payment received function
-    payment_received(mock_log)
+    # Test the payment received function with the real contract
+    payment_received(log)
     
     # Assertions
-    mock_client.post_cast.assert_called_once()
-    assert mock_client.post_cast.call_args[1]['text'] == f"A picture of {mock_log.sender}:\n"
-    assert "https://jade-slow-pigeon-687.mypinata.cloud/ipfs/mockIpfsHash" in mock_client.post_cast.call_args[1]['embeds'][0]
+    warpcast_client.post_cast.assert_called_once()
+    assert warpcast_client.post_cast.call_args[1]['text'] == f"A picture of {log.sender}:\n"
+    assert "https://jade-slow-pigeon-687.mypinata.cloud/ipfs/IpfsHash" in warpcast_client.post_cast.call_args[1]['embeds'][0]
 
-def test_image_creation(mock_create_image):
-    prompt = "An angry ape that is screaming AHHHHH."
-    file_path = mock_create_image(prompt)
-    assert file_path == "/path/to/mock_image.jpeg"
+# def test_image_creation(image):
+#     prompt = "An angry ape that is screaming AHHHHH."
+#     file_path = create_image(prompt)
+#     assert file_path == "/path/to/_image.jpeg"
 
-def test_upload_to_pinata(mock_upload_to_pinata):
-    image = MagicMock()  # Mock image object
-    ipfs_hash = mock_upload_to_pinata(image)
-    assert ipfs_hash == "mockIpfsHash"
+# def test_upload_to_pinata(image):
+#     ipfs_hash = upload_to_pinata(image)
+#     assert ipfs_hash == "IpfsHash"

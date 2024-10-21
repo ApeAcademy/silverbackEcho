@@ -1,32 +1,30 @@
 import pytest
-from unittest.mock import MagicMock
 from ape import project
-from silverback import SilverbackBot
+from silverback import SilverbackApp
+from ape_farcaster import Warpcast
 import os
+from dotenv import load_dotenv
+
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    # Load environment variables from .env file
+    load_dotenv()
 
 @pytest.fixture
 def silverback_app():
-    app = SilverbackBot()
+    app = SilverbackApp()
     return app
 
 @pytest.fixture
-def mock_contract():
-    # Create a mock contract for the Echo contract
-    contract = MagicMock()
-    contract.Received = MagicMock()  # Mock the Received event
-    return contract
+def echo_contract():
+    # Use the actual contract address from the .env file
+    contract_address = os.getenv("ECHO_CONTRACT")
+    return project.Echo.at(contract_address)
 
 @pytest.fixture
-def mock_client():
-    client = MagicMock()
+def warpcast_client(silverback_app):
+    client = Warpcast(silverback_app.signer)
     return client
-
-@pytest.fixture
-def mock_env_vars(monkeypatch):
-    monkeypatch.setenv("STABILITY_KEY", "mock-stability-key")
-    monkeypatch.setenv("PINATA_API_KEY", "mock-pinata-key")
-    monkeypatch.setenv("PINATA_SECRET_API_KEY", "mock-pinata-secret")
-    monkeypatch.setenv("ECHO_CONTRACT", "0xMockContractAddress")
 
 @pytest.fixture
 def mock_create_image(monkeypatch):
